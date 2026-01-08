@@ -1,15 +1,97 @@
 export default `<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
+  <meta charset="utf-8"/>
   <title>VikasResume</title>
-  <base href="/vikas-resume/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
-<link rel="stylesheet" href="styles-UNS5FWXG.css"></head>
+  <base href="/vikas-resume/"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <link rel="icon" type="image/x-icon" href="favicon.ico"/>
+
+  <!-- Inline theme init: sets .dark on <html> early to prevent flash -->
+  <script>
+    (function () {
+      try {
+        const stored = localStorage.getItem('theme'); // 'dark' | 'light' | null
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+
+        if (stored === 'dark' || (stored === null && prefersDark)) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      } catch (e) {
+        /* ignore errors (e.g., private mode) */
+      }
+    })();
+  </script>
+
+  <!-- Minimal initial CSS so first paint respects theme variables -->
+  <style>
+    /* Core variables used by the app; these will be overridden by compiled styles */
+    :root {
+      --page-width: 980px;
+      --text-color: #111111;
+      --muted-color: #7d7d80;
+      --muted-color-strong: #3f3f45;
+      --surface-color: #f5f5f7;
+      --background-color: #ffffff;
+    }
+
+    :root.dark {
+      --text-color: #f5f5f7;
+      --muted-color: #a1a1a6;
+      --muted-color-strong: #e5e5ea;
+      --surface-color: #1c1c1e;
+      --background-color: #000000;
+    }
+
+    /* apply immediately to avoid white flash while external CSS loads */
+    html, body {
+      background: var(--background-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      min-height: 100%;
+    }
+
+    /* avoid transitions on first paint (prevents flicker) */
+    * {
+      transition: none !important;
+    }
+
+    /* restore transitions after 1s (when app has likely loaded) */
+    @media (prefers-reduced-motion: no-preference) {
+      :root {
+        --_restore-transitions: 1s;
+      }
+    }
+  </style>
+
+  <!-- Let browsers choose appropriate chrome color -->
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+<link rel="stylesheet" href="styles-ZRGMGVVY.css"></head>
 <body><script type="text/javascript" id="ng-event-dispatch-contract">(()=>{function p(t,n,r,o,e,i,f,m){return{eventType:t,event:n,targetElement:r,eic:o,timeStamp:e,eia:i,eirp:f,eiack:m}}function u(t){let n=[],r=e=>{n.push(e)};return{c:t,q:n,et:[],etc:[],d:r,h:e=>{r(p(e.type,e,e.target,t,Date.now()))}}}function s(t,n,r){for(let o=0;o<n.length;o++){let e=n[o];(r?t.etc:t.et).push(e),t.c.addEventListener(e,t.h,r)}}function c(t,n,r,o,e=window){let i=u(t);e._ejsas||(e._ejsas={}),e._ejsas[n]=i,s(i,r),s(i,o,!0)}window.__jsaction_bootstrap=c;})();
 </script>
   <app-root></app-root>
+
+  <!-- optional: small script to re-enable transitions after app load (prevents sudden motion) -->
+  <script>
+    (function () {
+      try {
+        // Re-enable CSS transitions a moment after load to avoid first-paint jank
+        window.addEventListener('load', function () {
+          setTimeout(function () {
+            const style = document.createElement('style');
+            style.innerHTML = '* { transition: initial !important; }';
+            document.head.appendChild(style);
+          }, 800);
+        }, { once: true });
+      } catch (e) {}
+    })();
+  </script>
 <script src="main-YBH2YXVO.js" type="module"></script></body>
 </html>
 `;
