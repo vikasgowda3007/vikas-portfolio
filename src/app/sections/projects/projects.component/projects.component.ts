@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Project } from '../../../core/models/resume/resume.module'
+import { Project } from '../../../core/models/resume/resume.module';
 
 @Component({
   selector: 'app-projects',

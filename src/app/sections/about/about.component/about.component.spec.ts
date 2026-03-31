@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { AboutComponent } from './about.component';
+import { RESUME } from '../../../core/data/resume-data';
 
 describe('AboutComponent', () => {
   let component: AboutComponent;
@@ -14,6 +15,8 @@ describe('AboutComponent', () => {
 
     fixture = TestBed.createComponent(AboutComponent);
     component = fixture.componentInstance;
+    fixture.componentRef.setInput('resume', RESUME);
+    fixture.detectChanges();
     await fixture.whenStable();
   });
 

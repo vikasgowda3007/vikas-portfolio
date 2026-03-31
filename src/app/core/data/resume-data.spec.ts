@@ -1,8 +1,9 @@
-import { ResumeData } from './resume-data';
+import { RESUME } from './resume-data';
 
-describe('ResumeData', () => {
-  it('should create an instance', () => {
-    const directive = new ResumeData();
-    expect(directive).toBeTruthy();
+describe('RESUME', () => {
+  it('should export the resume data used by the app', () => {
+    expect(RESUME.name).toBe('Vikas Keshavamurthy');
+    expect(RESUME.experience.length).toBeGreaterThan(0);
+    expect(RESUME.links.some((link) => link.label === 'Resume PDF')).toBe(true);
   });
 });

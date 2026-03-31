@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ExperienceComponent } from './experience.component';
+import { RESUME } from '../../../core/data/resume-data';
 
 describe('ExperienceComponent', () => {
   let component: ExperienceComponent;
@@ -14,6 +15,8 @@ describe('ExperienceComponent', () => {
 
     fixture = TestBed.createComponent(ExperienceComponent);
     component = fixture.componentInstance;
+    fixture.componentRef.setInput('experience', RESUME.experience);
+    fixture.detectChanges();
     await fixture.whenStable();
   });
 

@@ -1,9 +1,67 @@
 .app-shell {
   min-height: 100vh;
-  background: radial-gradient(circle at top, #f5f5f7 0, #ffffff 55%, #f5f5f7 100%);
   color: var(--text-color);
+  position: relative;
+  overflow: clip;
+}
+
+.app-shell::before,
+.app-shell::after {
+  content: '';
+  position: fixed;
+  pointer-events: none;
+  z-index: 0;
+  filter: blur(80px);
+}
+
+.app-shell::before {
+  width: 24rem;
+  height: 24rem;
+  top: 7rem;
+  right: -8rem;
+  background: rgba(22, 119, 255, 0.12);
+}
+
+.app-shell::after {
+  width: 20rem;
+  height: 20rem;
+  bottom: 12rem;
+  left: -7rem;
+  background: rgba(15, 23, 42, 0.08);
 }
 
 main {
-  padding-top: 4.5rem; // space for sticky nav
+  position: relative;
+  z-index: 1;
+  padding-top: 0.5rem;
+}
+
+.app-footer {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 0.75rem 1.5rem;
+  padding: 0 2rem 2rem;
+  max-width: var(--page-width);
+  margin: 0 auto;
+  color: var(--muted-color);
+  font-size: 0.84rem;
+}
+
+.app-footer p:last-child {
+  color: var(--muted-color-strong);
+}
+
+@media (max-width: 768px) {
+  .app-shell::before,
+  .app-shell::after {
+    opacity: 0.65;
+  }
+
+  .app-footer {
+    padding-inline: 1.25rem;
+    padding-bottom: 1.5rem;
+  }
 }

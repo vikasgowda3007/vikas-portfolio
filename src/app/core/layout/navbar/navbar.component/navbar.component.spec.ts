@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NavbarComponent } from './navbar.component';
+import { RESUME } from '../../../data/resume-data';
 
 describe('NavbarComponent', () => {
   let component: NavbarComponent;
@@ -14,6 +15,8 @@ describe('NavbarComponent', () => {
 
     fixture = TestBed.createComponent(NavbarComponent);
     component = fixture.componentInstance;
+    fixture.componentRef.setInput('name', RESUME.name);
+    fixture.detectChanges();
     await fixture.whenStable();
   });
 

@@ -1,28 +1,32 @@
 <section id="experience" class="section">
-  <div class="section-inner">
+  <div class="section-inner experience-shell">
     <header class="section-heading">
-      <h2>Experience</h2>
+      <p class="section-label">Experience</p>
+      <h2>Six years building secure, business-critical software.</h2>
       <p>
-        Roles where you shipped things that mattered, worked with great teams, and made users happy.
+        From telecom messaging infrastructure to enterprise data masking, the through-line has been reliability, user trust, and execution under real product pressure.
       </p>
     </header>
 
-    <div class="timeline">
-      <article *ngFor="let item of experience" class="timeline-item">
-        <div class="timeline-meta">
-          <div class="dot"></div>
-          <p class="period">{{ item.period }}</p>
+    <div class="experience-list">
+      <article *ngFor="let item of experience" class="experience-item">
+        <div class="experience-period">
+          <p>{{ item.period }}</p>
         </div>
 
-        <div class="card">
-          <header class="card-header">
-            <h3>{{ item.role }}</h3>
+        <div class="experience-body">
+          <header class="experience-header">
             <p class="company">{{ item.company }}</p>
+            <h3>{{ item.role }}</h3>
             <p class="location" *ngIf="item.location">{{ item.location }}</p>
           </header>
 
           <p class="description">
             {{ item.description }}
+          </p>
+
+          <p class="impact" *ngIf="item.impact">
+            {{ item.impact }}
           </p>
 
           <ul class="highlights">

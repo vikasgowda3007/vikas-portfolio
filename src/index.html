@@ -1,11 +1,72 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <title>VikasResume</title>
-  <base href="/">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="icon" type="image/x-icon" href="favicon.ico">
+  <meta charset="utf-8" />
+  <title>Vikas Keshavamurthy | Software Engineer</title>
+  <base href="/" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta
+    name="description"
+    content="Vikas Keshavamurthy is a software engineer with 6 years of experience across data security and telecommunications, currently pursuing an M.S. in Computer Science at Arizona State University."
+  />
+  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- Inline theme init so the first paint matches the user's saved or system preference -->
+  <script>
+    (function () {
+      try {
+        const root = document.documentElement;
+        const stored = localStorage.getItem('theme'); // 'dark' | 'light' | null
+        const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
+        const shouldUseDark = stored === 'dark' || (stored === null && prefersDark);
+
+        root.classList.toggle('dark', shouldUseDark);
+        root.classList.toggle('light', stored === 'light');
+        root.style.colorScheme = shouldUseDark ? 'dark' : 'light';
+      } catch (e) {
+        /* ignore errors (e.g., private mode) */
+      }
+    })();
+  </script>
+
+  <!-- Minimal initial CSS so first paint respects theme variables -->
+  <style>
+    :root {
+      --text-color: #0f172a;
+      --background-color: #f4f7fb;
+      color-scheme: light;
+    }
+
+    :root.dark {
+      --text-color: #f5f7fb;
+      --background-color: #050816;
+      color-scheme: dark;
+    }
+
+    :root.light {
+      color-scheme: light;
+    }
+
+    html, body {
+      background: var(--background-color);
+      color: var(--text-color);
+      margin: 0;
+      padding: 0;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      min-height: 100%;
+    }
+  </style>
+
+  <!-- Let browsers choose appropriate chrome color -->
+  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
 </head>
 <body>
   <app-root></app-root>

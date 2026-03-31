@@ -12,6 +12,7 @@ export interface Experience {
   description: string;
   highlights: string[];
   technologies?: string[];
+  impact?: string;
 }
 
 export interface Project {
@@ -22,6 +23,7 @@ export interface Project {
   linkLabel?: string;
   linkHref?: string;
   technologies?: string[];
+  type?: string;
 }
 
 export interface SkillCategory {
@@ -34,6 +36,8 @@ export interface Education {
   degree: string;
   period: string;
   location?: string;
+  gpa?: string;
+  highlights?: string[];
 }
 
 export interface ContactInfo {
@@ -41,6 +45,13 @@ export interface ContactInfo {
   phone?: string;
   location: string;
   availability?: string;
+  authorization?: string;
+}
+
+export interface ResumeMetric {
+  value: string;
+  label: string;
+  detail: string;
 }
 
 export interface Resume {
@@ -54,4 +65,8 @@ export interface Resume {
   skills: SkillCategory[];
   education: Education[];
   contact: ContactInfo;
+  metrics?: ResumeMetric[];
+  coursework?: string[];
+  currentFocus?: string[];
+  profileStatement?: string;
 }

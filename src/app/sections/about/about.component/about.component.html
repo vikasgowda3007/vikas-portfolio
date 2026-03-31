@@ -1,37 +1,51 @@
 <section id="about" class="section">
-  <div class="section-inner two-column">
-    <div class="section-header">
-      <h2>About</h2>
-      <p>
-        A quick snapshot of who you are, how you work, and what you care about.
-        Replace this copy with your own voice.
-      </p>
+  <div class="section-inner about-shell">
+    <div class="about-intro">
+      <p class="section-label">Current trajectory</p>
+      <h2>Experienced engineer, intentionally building the next chapter in graduate school.</h2>
     </div>
 
-    <div class="section-body">
+    <div class="about-content">
       <p class="about-main">
-        {{ resume.summary }}
+        {{ resume.profileStatement }}
       </p>
 
-      <div class="about-grid">
-        <div class="about-item">
+      <div class="about-facts">
+        <div class="about-fact">
           <h3>Location</h3>
           <p>{{ resume.location }}</p>
         </div>
 
-        <div class="about-item">
-          <h3>Availability</h3>
-          <p>{{ resume.contact.availability }}</p>
+        <div class="about-fact">
+          <h3>Work authorization</h3>
+          <p>{{ resume.contact.authorization }}</p>
         </div>
 
-        <div class="about-item" *ngIf="resume.education.length">
-          <h3>Education</h3>
-          <div *ngFor="let edu of resume.education">
-            <p class="edu-degree">{{ edu.degree }}</p>
-            <p class="edu-school">{{ edu.school }}</p>
-            <p class="edu-meta">{{ edu.period }} &mdash; {{ edu.location }}</p>
-          </div>
+        <div class="about-fact" *ngIf="resume.coursework?.length">
+          <h3>Coursework</h3>
+          <p>{{ resume.coursework?.join(' · ') }}</p>
         </div>
+      </div>
+
+      <div class="education-stack" *ngIf="resume.education.length">
+        <article *ngFor="let edu of resume.education" class="education-item">
+          <div class="education-heading">
+            <div>
+              <p class="edu-degree">{{ edu.degree }}</p>
+              <p class="edu-school">{{ edu.school }}</p>
+            </div>
+
+            <div class="edu-meta">
+              <span>{{ edu.period }}</span>
+              <span>{{ edu.location }}</span>
+              <span *ngIf="edu.gpa">{{ edu.gpa }} GPA</span>
+            </div>
+          </div>
+
+          <ul class="edu-highlights" *ngIf="edu.highlights?.length">
+            <li *ngFor="let highlight of edu.highlights">{{ highlight }}</li>
+          </ul>
+        </article>
       </div>
     </div>
   </div>

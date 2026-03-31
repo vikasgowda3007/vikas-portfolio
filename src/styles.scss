@@ -1,12 +1,48 @@
 :root {
-  --page-width: 980px;
-  --text-color: #111111;
-  --muted-color: #7d7d80;
-  --muted-color-strong: #3f3f45;
-  --surface-color: #f5f5f7;
-  --background-color: #ffffff;
-  --font-sans: -apple-system, BlinkMacSystemFont, 'SF Pro Text', system-ui, -system-ui,
-    'Segoe UI', sans-serif;
+  --page-width: 1220px;
+  --text-color: #0f172a;
+  --muted-color: #64748b;
+  --muted-color-strong: #334155;
+  --surface-color: rgba(255, 255, 255, 0.72);
+  --surface-strong: #ffffff;
+  --surface-muted: #edf2f8;
+  --background-color: #f4f7fb;
+  --page-background:
+    radial-gradient(circle at top left, rgba(64, 147, 255, 0.12), transparent 26%),
+    radial-gradient(circle at 82% 12%, rgba(12, 26, 75, 0.08), transparent 18%),
+    linear-gradient(180deg, #f8fbff 0%, #eef4fa 44%, #f4f7fb 100%);
+  --line-color: rgba(15, 23, 42, 0.08);
+  --shadow-color: rgba(15, 23, 42, 0.1);
+  --accent-color: #1677ff;
+  --accent-strong: #0f5fd8;
+  --accent-soft: rgba(22, 119, 255, 0.12);
+  --font-sans: 'Manrope', 'Segoe UI', sans-serif;
+  --font-mono: 'IBM Plex Mono', 'SFMono-Regular', monospace;
+  color-scheme: light;
+}
+
+:root.dark {
+  --text-color: #f5f7fb;
+  --muted-color: #9eabc0;
+  --muted-color-strong: #d4dced;
+  --surface-color: rgba(8, 14, 30, 0.72);
+  --surface-strong: #0e1830;
+  --surface-muted: #111d38;
+  --background-color: #050816;
+  --page-background:
+    radial-gradient(circle at top left, rgba(74, 144, 255, 0.18), transparent 24%),
+    radial-gradient(circle at 84% 10%, rgba(133, 92, 255, 0.12), transparent 20%),
+    linear-gradient(180deg, #09101f 0%, #050816 46%, #050816 100%);
+  --line-color: rgba(255, 255, 255, 0.08);
+  --shadow-color: rgba(0, 0, 0, 0.34);
+  --accent-color: #74b3ff;
+  --accent-strong: #8dc5ff;
+  --accent-soft: rgba(116, 179, 255, 0.14);
+  color-scheme: dark;
+}
+
+:root.light {
+  color-scheme: light;
 }
 
 *,
@@ -21,9 +57,14 @@ body {
   padding: 0;
 }
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
+  min-height: 100vh;
   font-family: var(--font-sans);
-  background: var(--background-color);
+  background: var(--page-background);
   color: var(--text-color);
   -webkit-font-smoothing: antialiased;
   text-rendering: optimizeLegibility;
@@ -43,7 +84,24 @@ button {
   font-family: inherit;
 }
 
-/* General typography */
+a {
+  color: inherit;
+}
+
+button,
+a {
+  transition:
+    color 180ms ease,
+    background-color 180ms ease,
+    border-color 180ms ease,
+    box-shadow 180ms ease,
+    transform 180ms ease,
+    opacity 180ms ease;
+}
+
+::selection {
+  background: var(--accent-soft);
+}
 
 h1,
 h2,
@@ -57,44 +115,106 @@ p {
   margin: 0;
 }
 
-/* Shared section spacing (used by multiple section scss files) */
-
 .section {
-  padding-block: 4.5rem;
+  position: relative;
+  padding-block: clamp(4.5rem, 9vw, 8rem);
+  scroll-margin-top: 7rem;
 }
 
 .section-inner {
   max-width: var(--page-width);
   margin: 0 auto;
-  padding-inline: 1.5rem;
+  padding-inline: clamp(1.25rem, 3vw, 2rem);
 }
 
-/* Smooth scrolling for Apple-like feel */
-html {
-  scroll-behavior: smooth;
+.section-label {
+  margin: 0 0 1rem;
+  font-family: var(--font-mono);
+  font-size: 0.74rem;
+  font-weight: 500;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--muted-color);
 }
 
-/* Light dark-mode adaptation */
+.btn {
+  border-radius: 999px;
+  padding: 0.88rem 1.35rem;
+  font-size: 0.92rem;
+  font-weight: 600;
+  border: 1px solid var(--line-color);
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.45rem;
+  cursor: pointer;
+  box-shadow: 0 12px 26px rgba(15, 23, 42, 0.08);
+}
+
+.btn.primary {
+  background: linear-gradient(180deg, var(--accent-color), var(--accent-strong));
+  color: #ffffff;
+  border-color: transparent;
+}
+
+.btn.primary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 18px 36px rgba(22, 119, 255, 0.24);
+}
+
+.btn.ghost {
+  background: color-mix(in srgb, var(--surface-color) 94%, transparent);
+  color: var(--text-color);
+}
+
+.btn.ghost:hover {
+  background: var(--surface-strong);
+  box-shadow: 0 16px 30px rgba(15, 23, 42, 0.1);
+  transform: translateY(-1px);
+}
+
+@keyframes drift {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+
+  50% {
+    transform: translate3d(0, -12px, 0) scale(1.03);
+  }
+}
+
+@keyframes reveal-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 
 @media (prefers-color-scheme: dark) {
-  :root {
-    --text-color: #f5f5f7;
-    --muted-color: #a1a1a6;
-    --muted-color-strong: #e5e5ea;
-    --surface-color: #1c1c1e;
-    --background-color: #000000;
-  }
-
-  body {
-    background: radial-gradient(circle at top, #1c1c1e 0, #000000 60%, #111111 100%);
-  }
-
-  .card,
-  .project-card,
-  .skill-card,
-  .contact-card {
-    background: radial-gradient(circle at top, #1c1c1e 0, #000000 75%);
-    border-color: rgba(255, 255, 255, 0.06);
-    box-shadow: 0 22px 50px rgba(0, 0, 0, 0.7);
+  :root:not(.light):not(.dark) {
+    --text-color: #f5f7fb;
+    --muted-color: #9eabc0;
+    --muted-color-strong: #d4dced;
+    --surface-color: rgba(8, 14, 30, 0.72);
+    --surface-strong: #0e1830;
+    --surface-muted: #111d38;
+    --background-color: #050816;
+    --page-background:
+      radial-gradient(circle at top left, rgba(74, 144, 255, 0.18), transparent 24%),
+      radial-gradient(circle at 84% 10%, rgba(133, 92, 255, 0.12), transparent 20%),
+      linear-gradient(180deg, #09101f 0%, #050816 46%, #050816 100%);
+    --line-color: rgba(255, 255, 255, 0.08);
+    --shadow-color: rgba(0, 0, 0, 0.34);
+    --accent-color: #74b3ff;
+    --accent-strong: #8dc5ff;
+    --accent-soft: rgba(116, 179, 255, 0.14);
+    color-scheme: dark;
   }
 }

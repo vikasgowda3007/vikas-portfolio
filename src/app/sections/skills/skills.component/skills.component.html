@@ -1,20 +1,21 @@
 <section id="skills" class="section">
-  <div class="section-inner">
+  <div class="section-inner skills-shell">
     <header class="section-heading">
-      <h2>Skills</h2>
+      <p class="section-label">Operating system</p>
+      <h2>Angular first, backend fluent, and comfortable with AI-adjacent tooling.</h2>
       <p>
-        A quick overview of tools, stacks, and strengths you bring to a team.
+        The strongest through-line is full-stack product delivery: shaping frontends, wiring APIs, debugging production systems, and keeping releases moving.
       </p>
     </header>
 
-    <div class="skill-grid">
-      <article *ngFor="let s of skills" class="skill-card">
+    <div class="skill-groups">
+      <article *ngFor="let s of skills" class="skill-group">
         <h3>{{ s.category }}</h3>
-        <ul>
-          <li *ngFor="let item of s.items">
+        <div class="skill-list">
+          <span *ngFor="let item of s.items">
             {{ item }}
-          </li>
-        </ul>
+          </span>
+        </div>
       </article>
     </div>
   </div>

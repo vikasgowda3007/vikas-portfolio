@@ -1,41 +1,35 @@
 <section id="projects" class="section">
-  <div class="section-inner">
+  <div class="section-inner projects-shell">
     <header class="section-heading">
-      <h2>Selected Projects</h2>
+      <p class="section-label">Selected projects</p>
+      <h2>Projects that show range, curiosity, and product taste.</h2>
       <p>
-        Craft, polish, and experiments that show how you think about product and experience.
+        From AI-assisted tooling to coursework and public-facing Angular work, each project reflects a slightly different engineering mode.
       </p>
     </header>
 
-    <div class="project-grid">
-      <article *ngFor="let project of projects" class="project-card">
-        <div class="project-header">
+    <div class="project-list">
+      <article *ngFor="let project of projects; let i = index" class="project-feature">
+        <div class="project-index">0{{ i + 1 }}</div>
+
+        <div class="project-copy">
+          <p class="project-meta">
+            {{ project.type }}<span *ngIf="project.period"> · {{ project.period }}</span>
+          </p>
           <h3>{{ project.name }}</h3>
           <p class="tagline">{{ project.tagline }}</p>
+          <p class="description">{{ project.description }}</p>
+          <p class="tech" *ngIf="project.technologies?.length">{{ project.technologies?.join(' / ') }}</p>
         </div>
 
-        <p class="description">{{ project.description }}</p>
-
-        <div class="meta">
-          <span *ngIf="project.period" class="pill">{{ project.period }}</span>
-          <span
-            *ngIf="project.technologies?.length"
-            class="tech"
-          >
-            {{ project.technologies?.join(' · ') }}
-          </span>
+        <div class="project-panel">
+          <div class="project-panel-inner">
+            <p class="panel-label">Focus</p>
+            <ul>
+              <li *ngFor="let tech of project.technologies?.slice(0, 4)">{{ tech }}</li>
+            </ul>
+          </div>
         </div>
-
-        <a
-          *ngIf="project.linkHref"
-          class="project-link"
-          [href]="project.linkHref"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          {{ project.linkLabel || 'View project' }}
-          <span aria-hidden="true">›</span>
-        </a>
       </article>
     </div>
   </div>

@@ -1,13 +1,17 @@
 <header class="nav">
   <div class="nav-inner">
-    <button class="nav-logo" (click)="scrollHome()">
+    <button class="nav-logo" type="button" (click)="scrollHome()" aria-label="Scroll to top">
       <span class="dot"></span>
-      <span class="name">{{ name }}</span>
+      <span class="brand-block">
+        <span class="name">{{ name }}</span>
+        <span class="meta">Software Engineer</span>
+      </span>
     </button>
 
     <nav class="nav-links" aria-label="Main navigation">
       <button
         *ngFor="let section of sections"
+        type="button"
         class="nav-link"
         (click)="scrollTo(section.id)"
       >

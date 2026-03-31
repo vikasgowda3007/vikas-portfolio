@@ -1,42 +1,80 @@
 <section id="top" class="section hero">
+  <div class="hero-backdrop" aria-hidden="true">
+    <div class="hero-glow hero-glow-a"></div>
+    <div class="hero-glow hero-glow-b"></div>
+    <div class="hero-gridlines"></div>
+  </div>
+
   <div class="section-inner hero-inner">
-    <p class="eyebrow">Personal Resume</p>
+    <div class="hero-copy">
+      <p class="hero-overline">{{ resume.location }} · {{ resume.contact.authorization }}</p>
 
-    <h1 class="hero-title">
-      {{ resume.name }}<span class="hero-dot">.</span>
-    </h1>
+      <h1 class="hero-title">
+        <span class="hero-title-name">{{ resume.name }}</span>
+        <span class="hero-title-line">Secure products. Polished interfaces. Grounded engineering.</span>
+      </h1>
 
-    <p class="hero-role">
-      {{ resume.role }}
-    </p>
+      <p class="hero-role">
+        {{ resume.role }}
+      </p>
 
-    <p class="hero-summary">
-      {{ resume.summary }}
-    </p>
+      <p class="hero-summary">
+        {{ resume.summary }}
+      </p>
 
-    <div class="hero-meta">
-      <span>{{ resume.location }}</span>
-      <span>&bull;</span>
-      <span>{{ resume.contact.availability }}</span>
+      <div class="hero-actions">
+        <a
+          class="btn primary"
+          href="mailto:{{ resume.contact.email }}"
+        >
+          Email Vikas
+        </a>
+
+        <a
+          *ngFor="let link of resume.links"
+          class="btn ghost"
+          [href]="link.href"
+        >
+          {{ link.label }}
+        </a>
+      </div>
+
+      <ul class="hero-focus" *ngIf="resume.currentFocus?.length">
+        <li *ngFor="let item of resume.currentFocus">
+          {{ item }}
+        </li>
+      </ul>
     </div>
 
-    <div class="hero-actions">
-      <a
-        class="btn primary"
-        href="mailto:{{ resume.contact.email }}"
-      >
-        Contact me
-      </a>
+    <div class="hero-stage">
+      <div class="stage-shell">
+        <div class="stage-topline">
+          <span>Current chapter</span>
+          <span>Aug 2025 – May 2027</span>
+        </div>
 
-      <a
-        *ngFor="let link of resume.links"
-        class="btn ghost"
-        [href]="link.href"
-        [attr.target]="link.external ? '_blank' : null"
-        [attr.rel]="link.external ? 'noopener noreferrer' : null"
-      >
-        {{ link.label }}
-      </a>
+        <div class="stage-headline">
+          <p class="stage-label">Arizona State University</p>
+          <h2>M.S. Computer Science</h2>
+          <p class="stage-copy">{{ resume.profileStatement }}</p>
+        </div>
+
+        <div class="metric-grid" *ngIf="resume.metrics?.length">
+          <article *ngFor="let metric of resume.metrics" class="metric">
+            <p class="metric-value">{{ metric.value }}</p>
+            <p class="metric-label">{{ metric.label }}</p>
+            <p class="metric-detail">{{ metric.detail }}</p>
+          </article>
+        </div>
+
+        <div class="stage-track">
+          <span>Angular</span>
+          <span>Java</span>
+          <span>Node.js</span>
+          <span>Python</span>
+          <span>AI workflows</span>
+        </div>
+      </div>
     </div>
   </div>
 </section>

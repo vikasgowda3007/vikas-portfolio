@@ -1,57 +1,76 @@
-.section {
-  padding-block: 4.5rem;
-}
-
-.section-inner {
-  max-width: var(--page-width);
-  margin: 0 auto;
-  padding-inline: 1.5rem;
-}
-
-.section h2 {
-  font-size: 1.8rem;
-  letter-spacing: -0.03em;
-  margin-bottom: 0.5rem;
-}
-
-.section-header > p {
-  color: var(--muted-color);
-  max-width: 26rem;
-}
-
-.two-column {
+.about-shell {
   display: grid;
-  grid-template-columns: minmax(0, 0.7fr) minmax(0, 1.3fr);
-  gap: 3rem;
+  grid-template-columns: minmax(0, 0.8fr) minmax(0, 1.2fr);
+  gap: clamp(2rem, 5vw, 4rem);
   align-items: flex-start;
 }
 
+.about-intro {
+  position: sticky;
+  top: 7rem;
+}
+
+.about-intro h2 {
+  max-width: 13ch;
+  font-size: clamp(2rem, 3.2vw, 3.2rem);
+  line-height: 1.02;
+  letter-spacing: -0.06em;
+}
+
 .about-main {
-  font-size: 1.02rem;
+  font-size: clamp(1.15rem, 1.8vw, 1.4rem);
   line-height: 1.7;
+  color: var(--muted-color-strong);
   margin-bottom: 2rem;
 }
 
-.about-grid {
+.about-facts {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 1.5rem;
+  margin-bottom: 2rem;
 }
 
-.about-item h3 {
-  font-size: 0.9rem;
+.about-fact {
+  padding-top: 1rem;
+  border-top: 1px solid var(--line-color);
+}
+
+.about-fact h3 {
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
   text-transform: uppercase;
-  letter-spacing: 0.14em;
+  letter-spacing: 0.18em;
   color: var(--muted-color);
-  margin-bottom: 0.4rem;
+  margin-bottom: 0.7rem;
 }
 
-.about-item p {
+.about-fact p {
   margin: 0;
+  line-height: 1.7;
+}
+
+.education-stack {
+  display: grid;
+  gap: 1rem;
+}
+
+.education-item {
+  padding: 1.4rem 0 0;
+  border-top: 1px solid var(--line-color);
+}
+
+.education-heading {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 1rem;
 }
 
 .edu-degree {
-  font-weight: 600;
+  font-size: 1.08rem;
+  font-weight: 700;
+  margin-bottom: 0.2rem;
 }
 
 .edu-school {
@@ -59,14 +78,50 @@
 }
 
 .edu-meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+  gap: 0.5rem 0.75rem;
+  text-align: right;
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
   color: var(--muted-color);
-  font-size: 0.9rem;
-  margin-top: 0.25rem;
+  font-size: 0.68rem;
+}
+
+.edu-highlights {
+  margin: 1rem 0 0;
+  padding-left: 1rem;
+  display: grid;
+  gap: 0.4rem;
+  color: var(--muted-color-strong);
+}
+
+.edu-highlights li {
+  line-height: 1.6;
 }
 
 @media (max-width: 900px) {
-  .two-column {
+  .about-shell {
     grid-template-columns: minmax(0, 1fr);
     gap: 2rem;
+  }
+
+  .about-intro {
+    position: static;
+  }
+
+  .about-facts {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .education-heading {
+    flex-direction: column;
+  }
+
+  .edu-meta {
+    justify-content: flex-start;
+    text-align: left;
   }
 }

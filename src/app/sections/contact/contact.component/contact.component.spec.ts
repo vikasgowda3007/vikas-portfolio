@@ -1,6 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ContactComponent } from './contact.component';
+import { RESUME } from '../../../core/data/resume-data';
 
 describe('ContactComponent', () => {
   let component: ContactComponent;
@@ -14,6 +15,9 @@ describe('ContactComponent', () => {
 
     fixture = TestBed.createComponent(ContactComponent);
     component = fixture.componentInstance;
+    fixture.componentRef.setInput('contact', RESUME.contact);
+    fixture.componentRef.setInput('links', RESUME.links);
+    fixture.detectChanges();
     await fixture.whenStable();
   });
 
