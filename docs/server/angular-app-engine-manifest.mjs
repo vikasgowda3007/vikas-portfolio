@@ -1,6 +1,6 @@
 
 export default {
-  basePath: '/vikas-resume',
+  basePath: '/vikas-resume/browser',
   supportedLocales: {
   "en-US": ""
 },
