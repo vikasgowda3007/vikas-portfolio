@@ -7,7 +7,7 @@
 
 .hero-inner {
   display: grid;
-  grid-template-columns: minmax(0, 1.2fr) minmax(320px, 0.9fr);
+  grid-template-columns: minmax(0, 1.28fr) minmax(320px, 0.82fr);
   gap: clamp(2rem, 4vw, 4rem);
   align-items: center;
   padding-block: clamp(4rem, 7vw, 7rem) clamp(3rem, 6vw, 5rem);
@@ -59,6 +59,7 @@
 
 .hero-copy {
   max-width: 40rem;
+  min-width: 0;
   animation: reveal-up 0.8s ease-out both;
 }
 
@@ -79,10 +80,22 @@
 }
 
 .hero-title-name {
+  display: grid;
+  gap: 0.1em;
   font-size: clamp(3.4rem, 8vw, 7.4rem);
   font-weight: 800;
   line-height: 0.94;
   letter-spacing: -0.08em;
+}
+
+.hero-name-line {
+  display: block;
+  max-width: 100%;
+}
+
+.hero-name-line-secondary {
+  font-size: clamp(3.15rem, 6.35vw, 6.25rem);
+  letter-spacing: -0.085em;
 }
 
 .hero-title-line {
@@ -138,6 +151,9 @@
 
 .hero-stage {
   position: relative;
+  width: 100%;
+  max-width: 26rem;
+  justify-self: end;
   animation: reveal-up 0.9s ease-out 0.12s both;
 }
 

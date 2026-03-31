@@ -1,5 +1,5 @@
 {
-  "name": "vikas-resume",
+  "name": "vikas-portfolio",
   "version": "0.0.0",
   "scripts": {
     "ng": "ng",
@@ -7,7 +7,7 @@
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
     "test": "ng test",
-    "serve:ssr:vikas-resume": "node dist/vikas-resume/server/server.mjs"
+    "serve:ssr:vikas-portfolio": "node dist/vikas-portfolio/server/server.mjs"
   },
   "prettier": {
     "printWidth": 100,

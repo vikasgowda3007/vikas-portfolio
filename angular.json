@@ -6,7 +6,7 @@
   },
   "newProjectRoot": "projects",
   "projects": {
-    "vikas-resume": {
+    "vikas-portfolio": {
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -68,10 +68,10 @@
           "builder": "@angular/build:dev-server",
           "configurations": {
             "production": {
-              "buildTarget": "vikas-resume:build:production"
+              "buildTarget": "vikas-portfolio:build:production"
             },
             "development": {
-              "buildTarget": "vikas-resume:build:development"
+              "buildTarget": "vikas-portfolio:build:development"
             }
           },
           "defaultConfiguration": "development"

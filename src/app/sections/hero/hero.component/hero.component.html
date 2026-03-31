@@ -10,7 +10,12 @@
       <p class="hero-overline">{{ resume.location }} · {{ resume.contact.authorization }}</p>
 
       <h1 class="hero-title">
-        <span class="hero-title-name">{{ resume.name }}</span>
+        <span class="hero-title-name">
+          <span class="hero-name-line">{{ primaryName }}</span>
+          <span *ngIf="secondaryName" class="hero-name-line hero-name-line-secondary">
+            {{ secondaryName }}
+          </span>
+        </span>
         <span class="hero-title-line">Secure products. Polished interfaces. Grounded engineering.</span>
       </h1>
 
