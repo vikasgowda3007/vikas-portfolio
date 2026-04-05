@@ -1,4 +1,5 @@
-:root {
+:root,
+:root.light {
   --page-width: 1220px;
   --text-color: #0f172a;
   --muted-color: #64748b;
@@ -39,10 +40,6 @@
   --accent-strong: #8dc5ff;
   --accent-soft: rgba(116, 179, 255, 0.14);
   color-scheme: dark;
-}
-
-:root.light {
-  color-scheme: light;
 }
 
 *,

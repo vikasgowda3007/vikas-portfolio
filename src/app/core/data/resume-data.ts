@@ -8,6 +8,15 @@ export const RESUME: Resume = {
     'Experienced engineer intentionally pursuing internships and adjacent product engineering roles while completing an M.S. in Computer Science at Arizona State University. Strongest in Angular-first full-stack delivery with Java or Node.js, with hands-on experience in secure product design, release leadership, and AI-assisted workflow tooling.',
   profileStatement:
     'Currently completing an M.S. in Computer Science at Arizona State University, serving as a Teaching Assistant / Grader for Software Security, and looking for opportunities where secure systems and thoughtful product experience intersect.',
+  portrait: {
+    src: 'assets/portraits/vikas-hero-1120.jpg',
+    srcSet: 'assets/portraits/vikas-hero-760.jpg 760w, assets/portraits/vikas-hero-1120.jpg 1120w',
+    avifSrcSet: 'assets/portraits/vikas-hero-760.avif 760w, assets/portraits/vikas-hero-1120.avif 1120w',
+    alt: 'Portrait of Vikas Keshavamurthy smiling in a warm indoor setting',
+    width: 1120,
+    height: 1382,
+    objectPosition: 'center 16%'
+  },
   metrics: [
     {
       value: '6',

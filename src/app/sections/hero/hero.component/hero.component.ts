@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { Resume } from '../../../core/models/resume/resume.module';
+import { Resume, ResumeLink } from '../../../core/models/resume/resume.module';
+import { isLinkedInProfileLink } from '../../../core/linkedin-badge';
 
 @Component({
   selector: 'app-hero',
@@ -20,5 +21,9 @@ export class HeroComponent {
   get secondaryName(): string {
     const [, ...rest] = this.resume.name.trim().split(/\s+/);
     return rest.join(' ');
+  }
+
+  get actionLinks(): ResumeLink[] {
+    return this.resume.links.filter((link) => !isLinkedInProfileLink(link.href));
   }
 }

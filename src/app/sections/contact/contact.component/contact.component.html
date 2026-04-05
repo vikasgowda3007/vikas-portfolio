@@ -22,11 +22,37 @@
         <p class="authorization" *ngIf="contact.authorization">{{ contact.authorization }}</p>
       </div>
 
-      <div class="links" *ngIf="links.length">
+      <div class="linkedin" *ngIf="linkedinBadgeHref && linkedinBadgeVanity">
+        <p class="label">LinkedIn</p>
+        <div class="linkedin-badge-stage" [class.linkedin-badge-stage--official]="badgeDisplayMode === 'official'">
+          <div
+            #linkedinBadgeHost
+            class="badge-base LI-profile-badge linkedin-badge"
+            data-locale="en_US"
+            data-size="medium"
+            data-theme="dark"
+            data-type="VERTICAL"
+            [attr.data-vanity]="linkedinBadgeVanity"
+            data-version="v1"
+          >
+            <a class="badge-base__link LI-simple-link linkedin-badge-anchor" [href]="linkedinBadgeHref">
+              Vikas Keshavamurthy
+            </a>
+          </div>
+
+          <a *ngIf="showFallbackBadge" class="linkedin-fallback-card" [href]="linkedinBadgeHref">
+            <span class="linkedin-fallback-kicker">Public LinkedIn profile</span>
+            <span class="linkedin-fallback-name">{{ linkedinDisplayName }}</span>
+            <span class="linkedin-fallback-cta">View profile</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="links" *ngIf="profileLinks.length">
         <p class="label">Elsewhere</p>
         <div class="link-list">
           <a
-            *ngFor="let link of links"
+            *ngFor="let link of profileLinks"
             [href]="link.href"
           >
             {{ link.label }}

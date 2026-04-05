@@ -36,7 +36,7 @@
         </a>
 
         <a
-          *ngFor="let link of resume.links"
+          *ngFor="let link of actionLinks"
           class="btn ghost"
           [href]="link.href"
         >
@@ -51,34 +51,32 @@
       </ul>
     </div>
 
-    <div class="hero-stage">
-      <div class="stage-shell">
-        <div class="stage-topline">
-          <span>Current chapter</span>
-          <span>Aug 2025 – May 2027</span>
-        </div>
+    <div class="hero-stage" [class.hero-stage-fallback]="!resume.portrait">
+      <div class="portrait-stage" *ngIf="resume.portrait as portrait">
+        <div class="portrait-orbit" aria-hidden="true"></div>
 
-        <div class="stage-headline">
-          <p class="stage-label">Arizona State University</p>
-          <h2>M.S. Computer Science</h2>
-          <p class="stage-copy">{{ resume.profileStatement }}</p>
-        </div>
+        <picture class="portrait-frame">
+          <source
+            *ngIf="portrait.avifSrcSet"
+            type="image/avif"
+            [attr.srcset]="portrait.avifSrcSet"
+            sizes="(max-width: 768px) 82vw, (max-width: 960px) 72vw, (max-width: 1280px) 36vw, 31rem"
+          />
 
-        <div class="metric-grid" *ngIf="resume.metrics?.length">
-          <article *ngFor="let metric of resume.metrics" class="metric">
-            <p class="metric-value">{{ metric.value }}</p>
-            <p class="metric-label">{{ metric.label }}</p>
-            <p class="metric-detail">{{ metric.detail }}</p>
-          </article>
-        </div>
-
-        <div class="stage-track">
-          <span>Angular</span>
-          <span>Java</span>
-          <span>Node.js</span>
-          <span>Python</span>
-          <span>AI workflows</span>
-        </div>
+          <img
+            class="portrait-image"
+            [src]="portrait.src"
+            [attr.srcset]="portrait.srcSet || null"
+            sizes="(max-width: 768px) 82vw, (max-width: 960px) 72vw, (max-width: 1280px) 36vw, 31rem"
+            [alt]="portrait.alt"
+            [attr.width]="portrait.width"
+            [attr.height]="portrait.height"
+            [style.object-position]="portrait.objectPosition || null"
+            loading="eager"
+            fetchpriority="high"
+            decoding="async"
+          />
+        </picture>
       </div>
     </div>
   </div>

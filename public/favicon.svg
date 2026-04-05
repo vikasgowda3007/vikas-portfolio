@@ -1,0 +1,25 @@
+<svg width="64" height="64" viewBox="0 0 64 64" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="bg" x1="10" y1="8" x2="56" y2="58" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#0B142A"/>
+      <stop offset="1" stop-color="#122857"/>
+    </linearGradient>
+    <radialGradient id="glow" cx="0" cy="0" r="1" gradientUnits="userSpaceOnUse" gradientTransform="translate(47 17) rotate(135) scale(24)">
+      <stop stop-color="#8DC5FF" stop-opacity="0.95"/>
+      <stop offset="1" stop-color="#8DC5FF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="stroke" x1="17" y1="15" x2="50" y2="47" gradientUnits="userSpaceOnUse">
+      <stop stop-color="#F8FBFF"/>
+      <stop offset="1" stop-color="#B7D8FF"/>
+    </linearGradient>
+  </defs>
+
+  <rect x="4" y="4" width="56" height="56" rx="18" fill="url(#bg)"/>
+  <rect x="4.5" y="4.5" width="55" height="55" rx="17.5" stroke="#FFFFFF" stroke-opacity="0.14"/>
+  <circle cx="47" cy="17" r="16" fill="url(#glow)"/>
+
+  <path d="M16.5 18L24.5 45L32.5 18" stroke="url(#stroke)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <path d="M37.5 18V46" stroke="url(#stroke)" stroke-width="5.5" stroke-linecap="round"/>
+  <path d="M49 19L37.5 31.5L49 45" stroke="url(#stroke)" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round"/>
+  <circle cx="50.5" cy="15.5" r="2.5" fill="#74B3FF"/>
+</svg>

@@ -23,4 +23,21 @@ describe('HeroComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('keeps LinkedIn out of the hero action links', () => {
+    const element: HTMLElement = fixture.nativeElement;
+    const actionLinks = Array.from(element.querySelectorAll<HTMLAnchorElement>('.hero-actions a.btn.ghost')).map(
+      (link) => link.textContent?.trim()
+    );
+
+    expect(actionLinks).toContain('GitHub');
+    expect(actionLinks).toContain('Resume PDF');
+    expect(actionLinks).not.toContain('LinkedIn');
+  });
+
+  it('does not render the current chapter stage card', () => {
+    const element: HTMLElement = fixture.nativeElement;
+
+    expect(element.querySelector('.stage-shell')).toBeNull();
+  });
 });

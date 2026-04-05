@@ -56,6 +56,13 @@
   gap: 1.5rem;
 }
 
+.primary,
+.linkedin,
+.links {
+  display: grid;
+  justify-items: center;
+}
+
 .label {
   text-transform: uppercase;
   letter-spacing: 0.18em;
@@ -82,6 +89,132 @@
 .authorization {
   margin-top: 0.6rem;
   color: rgba(226, 232, 240, 0.78);
+}
+
+.linkedin {
+  gap: 0.85rem;
+  padding: 1.1rem;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background:
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02)),
+    rgba(255, 255, 255, 0.02);
+}
+
+.linkedin-badge-stage {
+  position: relative;
+  isolation: isolate;
+  width: min(100%, 28rem);
+  min-height: 15.5rem;
+  display: grid;
+  place-items: center;
+}
+
+.linkedin-badge-stage--official {
+  min-height: 0;
+}
+
+.linkedin-badge {
+  position: relative;
+  z-index: 2;
+  display: grid;
+  place-items: center;
+  width: 100%;
+  min-height: 15.5rem;
+  pointer-events: none;
+}
+
+.linkedin-badge iframe {
+  pointer-events: auto;
+  border-radius: 1rem;
+  overflow: hidden;
+}
+
+.linkedin-badge-anchor {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  white-space: nowrap;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+.linkedin-fallback-card {
+  position: absolute;
+  inset: 0;
+  z-index: 3;
+  display: grid;
+  align-content: center;
+  justify-items: center;
+  gap: 0.8rem;
+  padding: 1.6rem;
+  border-radius: 1.25rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background:
+    radial-gradient(circle at top left, rgba(116, 179, 255, 0.12), transparent 30%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.06), rgba(255, 255, 255, 0.02)),
+    rgba(12, 18, 34, 0.78);
+  text-decoration: none;
+  color: #f8fbff;
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.05),
+    0 18px 44px rgba(0, 0, 0, 0.18);
+}
+
+.linkedin-fallback-card:hover {
+  transform: translateY(-1px);
+  background:
+    radial-gradient(circle at top left, rgba(116, 179, 255, 0.16), transparent 32%),
+    linear-gradient(180deg, rgba(255, 255, 255, 0.08), rgba(255, 255, 255, 0.03)),
+    rgba(12, 18, 34, 0.84);
+}
+
+.linkedin-fallback-kicker {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: rgba(226, 232, 240, 0.54);
+}
+
+.linkedin-fallback-name {
+  font-size: clamp(1.15rem, 2vw, 1.5rem);
+  font-weight: 700;
+  letter-spacing: -0.04em;
+}
+
+.linkedin-fallback-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.85rem;
+  padding: 0.75rem 1.15rem;
+  border-radius: 999px;
+  border: 1px solid rgba(255, 255, 255, 0.16);
+  background: rgba(255, 255, 255, 0.05);
+  font-size: 0.92rem;
+  font-weight: 600;
+}
+
+.linkedin-badge-stage--official .linkedin-fallback-card {
+  display: none;
+}
+
+.linkedin-badge-stage:has(.linkedin-badge iframe) {
+  min-height: 0;
+}
+
+.linkedin-badge-stage:has(.linkedin-badge iframe) .linkedin-badge {
+  pointer-events: auto;
+  z-index: 4;
+  min-height: 0;
+}
+
+.linkedin-badge-stage:has(.linkedin-badge iframe) .linkedin-fallback-card {
+  display: none;
 }
 
 .links .link-list {
@@ -114,5 +247,18 @@
 
   .contact-card {
     padding: 1.5rem;
+  }
+
+  .linkedin {
+    padding: 1rem;
+  }
+
+  .linkedin-badge-stage,
+  .linkedin-badge {
+    min-height: 14.5rem;
+  }
+
+  .linkedin-fallback-card {
+    padding: 1.35rem 1.15rem;
   }
 }

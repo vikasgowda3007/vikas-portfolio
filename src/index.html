@@ -9,7 +9,11 @@
     name="description"
     content="Vikas Keshavamurthy is a software engineer with 6 years of experience across data security and telecommunications, currently pursuing an M.S. in Computer Science at Arizona State University."
   />
-  <link rel="icon" type="image/x-icon" href="favicon.ico" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg?v=20260405b" />
+  <link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png?v=20260405b" />
+  <link rel="icon" type="image/png" sizes="16x16" href="favicon-16.png?v=20260405b" />
+  <link rel="shortcut icon" href="favicon.ico?v=20260405b" />
+  <link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png?v=20260405b" />
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link
@@ -25,10 +29,12 @@
         const stored = localStorage.getItem('theme'); // 'dark' | 'light' | null
         const prefersDark = window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
         const shouldUseDark = stored === 'dark' || (stored === null && prefersDark);
+        const themeColorMeta = document.querySelector('meta[name="theme-color"]');
 
         root.classList.toggle('dark', shouldUseDark);
         root.classList.toggle('light', stored === 'light');
         root.style.colorScheme = shouldUseDark ? 'dark' : 'light';
+        themeColorMeta?.setAttribute('content', shouldUseDark ? '#050816' : '#f8fbff');
       } catch (e) {
         /* ignore errors (e.g., private mode) */
       }
@@ -64,9 +70,7 @@
     }
   </style>
 
-  <!-- Let browsers choose appropriate chrome color -->
-  <meta name="theme-color" content="#ffffff" media="(prefers-color-scheme: light)">
-  <meta name="theme-color" content="#000000" media="(prefers-color-scheme: dark)">
+  <meta name="theme-color" content="#f8fbff">
 </head>
 <body>
   <app-root></app-root>

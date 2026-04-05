@@ -23,4 +23,14 @@ describe('NavbarComponent', () => {
   it('should create', () => {
     expect(component).toBeTruthy();
   });
+
+  it('renders the branded mark instead of the legacy dot', () => {
+    const host = fixture.nativeElement as HTMLElement;
+
+    const brandMark = host.querySelector<HTMLImageElement>('.brand-mark');
+
+    expect(brandMark).not.toBeNull();
+    expect(brandMark?.getAttribute('src')).toContain('favicon.svg');
+    expect(host.querySelector('.dot')).toBeNull();
+  });
 });

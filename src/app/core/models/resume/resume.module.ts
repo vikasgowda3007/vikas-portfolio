@@ -54,6 +54,16 @@ export interface ResumeMetric {
   detail: string;
 }
 
+export interface ResumePortrait {
+  src: string;
+  srcSet?: string;
+  avifSrcSet?: string;
+  alt: string;
+  width: number;
+  height: number;
+  objectPosition?: string;
+}
+
 export interface Resume {
   name: string;
   role: string;
@@ -69,4 +79,5 @@ export interface Resume {
   coursework?: string[];
   currentFocus?: string[];
   profileStatement?: string;
+  portrait?: ResumePortrait;
 }
